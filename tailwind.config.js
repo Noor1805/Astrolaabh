@@ -22,6 +22,9 @@ export default {
         display: ['Syncopate', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
+      animation: {
+        'spin-slow': 'spin 35s linear infinite',
+      },
       letterSpacing: {
         tighter: '-0.05em',
         widest: '0.25em',

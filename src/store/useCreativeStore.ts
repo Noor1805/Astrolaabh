@@ -66,7 +66,7 @@ export const useCreativeStore = create<CreativeState>((set) => ({
   setCursorState: (text, variant = 'pointer') => set({ cursorText: text, cursorVariant: variant }),
   resetCursor: () => set({ cursorText: '', cursorVariant: 'default' }),
 
-  isLoading: false,
+  isLoading: true,
   loadingProgress: 0,
   setLoadingProgress: (progress) => set({ loadingProgress: progress }),
   finishLoading: () => set({ isLoading: false, loadingProgress: 100 }),

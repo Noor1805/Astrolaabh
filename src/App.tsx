@@ -4,9 +4,13 @@ import { Footer } from './components/dom/layout/Footer';
 import { CustomCursor } from './components/dom/ui/CustomCursor';
 import { Preloader } from './components/dom/ui/Preloader';
 import { CartDrawer } from './components/dom/ui/CartDrawer';
-import { ProductConfigurator } from './components/dom/ui/ProductConfigurator';
 import { HeroSection } from './components/sections/HeroSection';
 import { NarrativeSection } from './components/sections/NarrativeSection';
+import { GallerySection } from './components/sections/GallerySection';
+import { WearGemstoneSection } from './components/sections/WearGemstoneSection';
+import { HeroMarquee } from './components/sections/HeroMarquee';
+import { AppointmentSection } from './components/sections/AppointmentSection';
+import { TestimonialsSection } from './components/sections/TestimonialsSection';
 import { CraftsmanshipSection } from './components/sections/CraftsmanshipSection';
 import { TechSpecsSection } from './components/sections/TechSpecsSection';
 import { CTASection } from './components/sections/CTASection';
@@ -33,22 +37,19 @@ export function App() {
       {/* Navigation Header */}
       <Navbar />
 
-      {/* Floating 3D Material & Exploded View HUD */}
-      <ProductConfigurator />
-
       {/* Interactive Cart Slide-Over Drawer */}
       <CartDrawer />
 
-      {/* DOM Narrative Flow */}
+      {/* Temporary showcase view: hero only; section components remain available above. */}
       <main className="relative z-10">
         <HeroSection />
+        <HeroMarquee />
         <NarrativeSection />
-        <CraftsmanshipSection />
-        <TechSpecsSection />
-        <CTASection />
+        <GallerySection />
+        <WearGemstoneSection />
+        <AppointmentSection />
+        <TestimonialsSection />
       </main>
-
-      {/* Editorial Footer */}
       <Footer />
     </div>
   );

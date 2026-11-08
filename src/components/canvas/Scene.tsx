@@ -16,7 +16,7 @@ export function Scene() {
 
   return (
     <div
-      className="fixed inset-0 w-full h-full pointer-events-auto z-0"
+      className="canvas-stage fixed inset-0 w-full h-full pointer-events-auto z-0"
       onPointerEnter={() => setCursorState('EXPLORE 3D', 'view')}
       onPointerLeave={resetCursor}
       onPointerDown={() => setIsAutoRotating(false)}

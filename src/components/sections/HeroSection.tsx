@@ -1,16 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Flower2, Play, ShieldCheck, Sparkles } from 'lucide-react';
+import heroBackground from '../../assets/herobg.png';
+import ruby from '../../assets/ruby.png';
+import emerald from '../../assets/emerald.png';
+import sapphire from '../../assets/sapphire.png';
+import diamond from '../../assets/diamond.png';
+import gold from '../../assets/gold.png';
 import { useCreativeStore } from '../../store/useCreativeStore';
 import { ScrollTrigger } from '../../lib/gsap';
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const setCurrentSection = useCreativeStore((s) => s.setCurrentSection);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-
     const trigger = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top center',
@@ -18,66 +23,89 @@ export function HeroSection() {
       onEnter: () => setCurrentSection('hero'),
       onEnterBack: () => setCurrentSection('hero'),
     });
-
     return () => trigger.kill();
   }, [setCurrentSection]);
+
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section
       id="hero"
       ref={sectionRef}
-      className="relative min-h-screen w-full flex flex-col justify-between p-6 sm:p-14 pointer-events-none z-10 pt-28"
+      className="astrology-hero relative isolate w-full overflow-hidden text-[#17140f]"
+      style={{ backgroundImage: `url(${heroBackground})` }}
     >
-      {/* Top Tagline & Status */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pointer-events-auto">
-        <div className="flex items-center gap-2 glass-pill px-3 py-1 rounded-full text-xs font-mono text-zinc-300">
-          <Sparkles className="w-3.5 h-3.5 text-brand-accent" />
-          <span>SERIES 2026 // EDITION 01</span>
-        </div>
-
-        <div className="font-mono text-[11px] text-zinc-500 tracking-widest uppercase hidden sm:block">
-          STATUS: ROTATIONAL SIMULATION ACTIVE
-        </div>
-      </div>
-
-      {/* Main Kinetic Typography */}
-      <div className="my-auto max-w-4xl space-y-4">
+      <div className="hero-warmth" />
+      <div className="hero-inner relative z-10 mx-auto flex min-h-[720px] max-w-[1380px] items-center px-5 pb-24 pt-28 sm:px-10 lg:px-[9%] lg:pb-28">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="hero-copy relative z-30 w-full lg:w-[43%]"
         >
-          <span className="font-mono text-xs sm:text-sm text-brand-accent tracking-widest uppercase font-semibold">
-            [ BESPOKE AUDIO ARCHITECTURE ]
-          </span>
-          <h1 className="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tighter text-white mt-2 leading-[0.95]">
-            HAUTE TECH. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-300 to-zinc-600">
-              UNBOUND SOUND.
-            </span>
+          <p className="mb-5 text-[10px] font-medium uppercase tracking-[0.32em] text-[#5d584f] sm:text-xs">
+            Ancient wisdom <span className="mx-2 text-[#aa8b58]">✦</span> Modern guidance
+          </p>
+          <h1 className="hero-title text-[3.35rem] leading-[0.91] tracking-[-0.035em] sm:text-[4.8rem] lg:text-[4.65rem] xl:text-[5rem]">
+            Gemstones
+            <br />
+            That <em>Align</em>
+            <br />
+            <span>With You</span>
           </h1>
+          <div className="hero-title-flourish" aria-hidden="true"><span>✦</span></div>
+          <div className="mt-7 flex flex-wrap items-center gap-5 sm:mt-8">
+            <button className="hero-primary" onClick={() => scrollTo('narrative')}>
+              Explore Collection <ArrowRight className="h-4 w-4" />
+            </button>
+            <button className="hero-secondary" onClick={() => scrollTo('narrative')}>
+              <span className="hero-play"><Play className="h-4 w-4 fill-current" /></span>
+              How It Works
+            </button>
+          </div>
         </motion.div>
 
-        <motion.p
+        <div className="gemstone-universe" aria-label="Astrological gemstone constellation">
+          <div className="celestial-wheel" />
+          <div className="orbit orbit-one" />
+          <div className="orbit orbit-two" />
+          <div className="orbit orbit-three" />
+          <div className="orbit orbit-four" />
+          <div className="gem gem-ruby"><img src={ruby} alt="Ruby gemstone" /></div>
+          <svg className="layered-orbits" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="400" cy="250" rx="165" ry="62" transform="rotate(-8 400 250)" />
+            <ellipse cx="400" cy="250" rx="235" ry="88" transform="rotate(14 400 250)" />
+            <ellipse cx="400" cy="250" rx="300" ry="112" transform="rotate(-18 400 250)" />
+            <ellipse cx="400" cy="250" rx="360" ry="145" transform="rotate(22 400 250)" />
+          </svg>
+          <div className="satellite-route route-emerald">
+            <img src={emerald} alt="Emerald gemstone" />
+          </div>
+          <div className="satellite-route route-sapphire">
+            <img src={sapphire} alt="Sapphire gemstone" />
+          </div>
+          <div className="satellite-route route-gold">
+            <img src={gold} alt="Yellow gemstone" />
+          </div>
+          <div className="satellite-route route-diamond">
+            <img src={diamond} alt="Diamond gemstone" />
+          </div>
+        </div>
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="font-sans text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed"
+          transition={{ duration: 0.9, delay: 0.45 }}
+          className="trust-bar"
         >
-          Forged from single-block aerospace titanium and acoustic beryllium drivers. The KINETIC-01 bridges industrial sculpture with generative acoustic fidelity.
-        </motion.p>
-      </div>
-
-      {/* Bottom Scroll Indicator & Drag Hint */}
-      <div className="flex items-end justify-between pointer-events-auto">
-        <div className="flex items-center gap-2 text-xs font-mono text-zinc-500">
-          <ChevronDown className="w-4 h-4 animate-bounce text-brand-accent" />
-          <span className="tracking-widest uppercase">SCROLL TO DISSECT ANATOMY</span>
-        </div>
-
-        <div className="glass-pill px-3 py-1.5 rounded-full font-mono text-[11px] text-zinc-400 tracking-wider hidden md:block">
-          [ 360° INTERACTIVE 3D STAGE ]
-        </div>
+          <div><Flower2 /><span>Vedic Guidance</span></div>
+          <i />
+          <div><Sparkles /><span>Authentic Gems</span></div>
+          <i />
+          <div><ShieldCheck /><span>Certified &amp; Trusted</span></div>
+          <i />
+          <div><BadgeCheck /><span>Personalized for You</span></div>
+        </motion.div>
       </div>
     </section>
   );

@@ -423,18 +423,18 @@ html.lenis, html.lenis body {
 .orbit-four { width: 94%; height: 46%; transform: translate(-50%, -50%) rotate(22deg); border-color: rgba(213, 188, 126, .38); }
 .gem { position: absolute; transform-origin: center; mix-blend-mode: screen; filter: saturate(1.08) contrast(1.03) drop-shadow(0 14px 13px rgba(52,34,10,.28)); }
 .gem img { width: 100%; height: 100%; object-fit: contain; }
-.gem-ruby { width: 25%; left: 38%; top: 35%; z-index: 20; animation: rubyFloat 32s ease-in-out infinite; }
+.gem-ruby { width: 25%; left: 38%; top: 35%; z-index: 20; transform: translate(0, 0) rotate(-2deg); animation: none !important; }
 .layered-orbits { position:absolute; inset:0; width:100%; height:100%; z-index:8; overflow:visible; filter: drop-shadow(0 0 2px rgba(229,199,122,.28)); }
 .layered-orbits ellipse, .layered-orbits use { fill:none; stroke:#d9c39a; stroke-width:1.5; vector-effect:non-scaling-stroke; opacity:.82; }
 .layered-orbits use:nth-of-type(2) { opacity:.58; }
 .layered-orbits use:nth-of-type(3) { opacity:.72; }
 .layered-orbits use:nth-of-type(4) { opacity:.48; }
-.satellite-route { --gem-size: clamp(64px, 6.2vw, 88px); position:absolute; left:0; top:0; width:var(--gem-size); height:var(--gem-size); z-index:9; pointer-events:none; will-change:offset-distance; offset-anchor:center; offset-position:center; offset-rotate:0deg; }
-.satellite-route img { display:block; width:100%; height:100%; object-fit:contain; filter:saturate(1.08) contrast(1.03) drop-shadow(0 10px 9px rgba(52,34,10,.28)); animation:gemstoneFloat 6s ease-in-out infinite alternate; }
-.route-emerald { offset-path: ellipse(clamp(90px, 18vw, 155px) clamp(58px, 9vw, 84px) at 50% 50%); animation:satelliteOrbit 22s linear infinite; animation-delay:-5.5s; }
-.route-sapphire { offset-path: ellipse(clamp(105px, 21vw, 180px) clamp(72px, 11vw, 108px) at 50% 50%); animation:satelliteOrbitReverse 26s linear infinite; animation-delay:-6.5s; }
-.route-gold { offset-path: ellipse(clamp(120px, 24vw, 205px) clamp(86px, 13vw, 130px) at 50% 50%); animation:satelliteOrbit 30s linear infinite; animation-delay:-7.5s; }
-.route-diamond { offset-path: ellipse(clamp(135px, 27vw, 230px) clamp(105px, 16vw, 150px) at 50% 50%); animation:satelliteOrbitReverse 34s linear infinite; animation-delay:-8.5s; }
+.satellite-route { --gem-size: clamp(64px, 6.2vw, 88px); position:absolute; width:var(--gem-size); height:var(--gem-size); z-index:9; pointer-events:none; offset-path:none !important; animation:none !important; }
+.satellite-route img { display:block; width:100%; height:100%; object-fit:contain; filter:saturate(1.08) contrast(1.03) drop-shadow(0 10px 9px rgba(52,34,10,.28)); animation:none !important; }
+.route-emerald { left: 24%; top: 26%; transform: rotate(-8deg); }
+.route-sapphire { left: 70%; top: 22%; transform: rotate(12deg); }
+.route-gold { left: 18%; top: 62%; transform: rotate(14deg); }
+.route-diamond { left: 74%; top: 60%; transform: rotate(-10deg); }
 
 .trust-bar {
   position: absolute;
@@ -497,25 +497,17 @@ html.lenis, html.lenis body {
   .route-gold { offset-path: ellipse(145px 82px at 50% 50%); }
   .route-diamond { offset-path: ellipse(165px 96px at 50% 50%); }
   .orbiter { width: 14%; }
-  .gem-ruby { width: 27%; left: 37%; top: 31%; }
-  .orbiter-sapphire { width: 17%; }
-  .orbiter-emerald { width: 17%; }
-  .orbiter-diamond { width: 18%; }
-  .orbiter-gold { width: 16%; }
-  .orbit-one { width: 64%; }
-  .orbit-two { width: 78%; }
-  .orbit-three { width: 92%; }
-  .trust-bar { left: 16px; right: 16px; bottom: 18px; min-height: 74px; grid-template-columns: repeat(2, 1fr); gap: 8px; border-radius: 20px; padding: 12px; }
-  .trust-bar i { display:none; }
-  .trust-bar div { font-size: 12px; gap: 7px; }
-  .trust-bar svg { width: 25px; height: 25px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gem, .orbiter, .satellite-route { animation: none !important; }
-  .route-emerald { offset-distance: 12%; }
-  .route-sapphire { offset-distance: 38%; }
-  .route-gold { offset-distance: 62%; }
-  .route-diamond { offset-distance: 87%; }
+  .gem-ruby { width: 25%; left: 38%; top: 35%; z-index: 20; transform: translate(0, 0) rotate(-2deg); animation: none !important; }
+.layered-orbits { position:absolute; inset:0; width:100%; height:100%; z-index:8; overflow:visible; filter: drop-shadow(0 0 2px rgba(229,199,122,.28)); }
+.layered-orbits ellipse, .layered-orbits use { fill:none; stroke:#d9c39a; stroke-width:1.5; vector-effect:non-scaling-stroke; opacity:.82; }
+.layered-orbits use:nth-of-type(2) { opacity:.58; }
+.layered-orbits use:nth-of-type(3) { opacity:.72; }
+.layered-orbits use:nth-of-type(4) { opacity:.48; }
+.satellite-route { --gem-size: clamp(64px, 6.2vw, 88px); position:absolute; width:var(--gem-size); height:var(--gem-size); z-index:9; pointer-events:none; offset-path:none !important; animation:none !important; }
+.satellite-route img { display:block; width:100%; height:100%; object-fit:contain; filter:saturate(1.08) contrast(1.03) drop-shadow(0 10px 9px rgba(52,34,10,.28)); animation:none !important; }
+.route-emerald { left: 24%; top: 26%; transform: rotate(-8deg); }
+.route-sapphire { left: 70%; top: 22%; transform: rotate(12deg); }
+.route-gold { left: 18%; top: 62%; transform: rotate(14deg); }
+.route-diamond { left: 74%; top: 60%; transform: rotate(-10deg); }
   .satellite-route img { animation: none !important; }
 }

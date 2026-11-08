@@ -1,7 +1,5 @@
-import { Scene } from './components/canvas/Scene';
 import { Navbar } from './components/dom/layout/Navbar';
 import { Footer } from './components/dom/layout/Footer';
-import { CustomCursor } from './components/dom/ui/CustomCursor';
 import { Preloader } from './components/dom/ui/Preloader';
 import { CartDrawer } from './components/dom/ui/CartDrawer';
 import { HeroSection } from './components/sections/HeroSection';
@@ -19,14 +17,8 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-brand-dark text-white selection:bg-brand-accent selection:text-black">
-      {/* Bespoke Magnetic Physics Cursor */}
-      <CustomCursor />
-
       {/* Sacred AstroLaabh Water & Gold Chakra Preloader */}
       <Preloader />
-
-      {/* High-Performance Ambient Celestial Stardust Canvas */}
-      <Scene />
 
       {/* Navigation Header */}
       <Navbar />

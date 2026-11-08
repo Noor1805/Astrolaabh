@@ -2,27 +2,22 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-export function ParticleField({ count = 180 }: { count?: number }) {
+export function ParticleField({ count = 140 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
 
-  const [positions, scales] = useMemo(() => {
+  const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    const sc = new Float32Array(count);
-
     for (let i = 0; i < count; i++) {
       pos[i * 3 + 0] = (Math.random() - 0.5) * 12;
       pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
-      sc[i] = Math.random() * 0.8 + 0.2;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 6;
     }
-
-    return [pos, sc];
+    return pos;
   }, [count]);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y += delta * 0.03;
-      pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.05;
+      pointsRef.current.rotation.y += delta * 0.02;
     }
   });
 
@@ -35,21 +30,17 @@ export function ParticleField({ count = 180 }: { count?: number }) {
           array={positions}
           itemSize={3}
         />
-        <bufferAttribute
-          attach="attributes-scale"
-          count={scales.length}
-          array={scales}
-          itemSize={1}
-        />
       </bufferGeometry>
       <pointsMaterial
-        size={0.03}
-        color="#a0c0ff"
+        size={0.035}
+        color="#d4af37"
         transparent
-        opacity={0.4}
+        opacity={0.35}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
       />
     </points>
   );
 }
+
+export default ParticleField;

@@ -11,9 +11,6 @@ import { WearGemstoneSection } from './components/sections/WearGemstoneSection';
 import { HeroMarquee } from './components/sections/HeroMarquee';
 import { AppointmentSection } from './components/sections/AppointmentSection';
 import { TestimonialsSection } from './components/sections/TestimonialsSection';
-import { CraftsmanshipSection } from './components/sections/CraftsmanshipSection';
-import { TechSpecsSection } from './components/sections/TechSpecsSection';
-import { CTASection } from './components/sections/CTASection';
 import { useLenis } from './hooks/useLenis';
 
 export function App() {
@@ -22,16 +19,13 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-brand-dark text-white selection:bg-brand-accent selection:text-black">
-      {/* Subtle Analog Film Grain Texture */}
-      <div className="grain-overlay" />
-
       {/* Bespoke Magnetic Physics Cursor */}
       <CustomCursor />
 
-      {/* Cinematic Asset Preloader */}
+      {/* Sacred AstroLaabh Water & Gold Chakra Preloader */}
       <Preloader />
 
-      {/* Persistent 3D WebGL Canvas (React Three Fiber) */}
+      {/* High-Performance Ambient Celestial Stardust Canvas */}
       <Scene />
 
       {/* Navigation Header */}
@@ -40,7 +34,7 @@ export function App() {
       {/* Interactive Cart Slide-Over Drawer */}
       <CartDrawer />
 
-      {/* Temporary showcase view: hero only; section components remain available above. */}
+      {/* Main Luxury Storytelling & Gemstone Flow */}
       <main className="relative z-10">
         <HeroSection />
         <HeroMarquee />
@@ -50,6 +44,8 @@ export function App() {
         <AppointmentSection />
         <TestimonialsSection />
       </main>
+
+      {/* Footer */}
       <Footer />
     </div>
   );

@@ -29,7 +29,7 @@ export function WaterMovingCanvas() {
       height = canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     // User click / touch creates pure golden circular ripple waves
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
@@ -44,21 +44,18 @@ export function WaterMovingCanvas() {
         y: py,
         startTime: performance.now(),
         amplitude: 1.0,
-        speed: 0.28,
+        speed: 0.32,
       });
 
-      if (clickWavesRef.current.length > 6) {
+      if (clickWavesRef.current.length > 5) {
         clickWavesRef.current.shift();
       }
     };
 
-    canvas.addEventListener('mousedown', handlePointerDown);
-    canvas.addEventListener('touchstart', handlePointerDown);
-
-    let lastFrame = performance.now();
+    canvas.addEventListener('mousedown', handlePointerDown, { passive: true });
+    canvas.addEventListener('touchstart', handlePointerDown, { passive: true });
 
     const render = (now: number) => {
-      lastFrame = now;
       const t = now * 0.001;
 
       const centerX = width / 2;
@@ -71,16 +68,15 @@ export function WaterMovingCanvas() {
 
       // 2. Pure Golden Circular Water Waves (Concentric Hairline Rings Expanding from Center)
       const ringCount = 8;
-      const ringSpacing = 76; // Calm spacing between expanding rings
-      const speed = 34; // Serene expansion speed
+      const ringSpacing = 76;
+      const speed = 36;
       const baseDistance = (t * speed) % ringSpacing;
 
-      ctx.save();
       for (let r = 0; r < ringCount; r++) {
         const radius = baseDistance + r * ringSpacing;
         if (radius < 25 || radius > maxDim) continue;
 
-        // Smooth fade curve: subtle at center, bright in middle, soft at edges
+        // Smooth fade curve
         const fade = Math.sin((radius / maxDim) * Math.PI);
         const waveAlpha = Math.max(0, fade * 0.85);
 
@@ -91,13 +87,11 @@ export function WaterMovingCanvas() {
         ctx.strokeStyle = `rgba(215, 205, 190, ${waveAlpha * 0.18})`;
         ctx.stroke();
 
-        // Wave Crest: Ultra-thin, crisp golden hairline ring
+        // Wave Crest: Ultra-thin, crisp golden hairline ring (No heavy shadowBlur!)
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        ctx.lineWidth = 0.55;
+        ctx.lineWidth = 0.6;
         ctx.strokeStyle = `rgba(217, 163, 60, ${waveAlpha * 0.65})`;
-        ctx.shadowColor = 'rgba(234, 179, 8, 0.2)';
-        ctx.shadowBlur = 1;
         ctx.stroke();
 
         // Inner Sharp Specular Glint (Hairline)
@@ -107,9 +101,8 @@ export function WaterMovingCanvas() {
         ctx.strokeStyle = `rgba(255, 255, 255, ${waveAlpha * 0.85})`;
         ctx.stroke();
       }
-      ctx.restore();
 
-      // 3. User Click/Touch Pure Golden Circular Waves (Ultra-Thin Hairline Rings)
+      // 3. User Click/Touch Waves
       const activeClickWaves: CircularWave[] = [];
       for (let i = 0; i < clickWavesRef.current.length; i++) {
         const wave = clickWavesRef.current[i];
@@ -122,7 +115,7 @@ export function WaterMovingCanvas() {
           activeClickWaves.push(wave);
 
           const fade = Math.pow(1 - life, 1.3) * wave.amplitude;
-          const subRings = 4;
+          const subRings = 3;
 
           for (let s = 0; s < subRings; s++) {
             const r = currentRadius - s * 36;
@@ -130,30 +123,26 @@ export function WaterMovingCanvas() {
 
             const alpha = Math.max(0, fade * (1 - s / subRings));
 
-            ctx.save();
-            // Trough shadow (Ultra-thin)
+            // Trough shadow
             ctx.beginPath();
             ctx.arc(wave.x, wave.y, r + 0.8, 0, Math.PI * 2);
             ctx.lineWidth = 0.5;
             ctx.strokeStyle = `rgba(215, 205, 190, ${alpha * 0.18})`;
             ctx.stroke();
 
-            // Golden Crest (Ultra-Thin Hairline)
+            // Golden Crest
             ctx.beginPath();
             ctx.arc(wave.x, wave.y, r, 0, Math.PI * 2);
-            ctx.lineWidth = 0.55;
+            ctx.lineWidth = 0.6;
             ctx.strokeStyle = `rgba(217, 163, 60, ${alpha * 0.65})`;
-            ctx.shadowColor = 'rgba(234, 179, 8, 0.2)';
-            ctx.shadowBlur = 1;
             ctx.stroke();
 
-            // Specular Glint (Hairline)
+            // Specular Glint
             ctx.beginPath();
             ctx.arc(wave.x, wave.y, Math.max(0.5, r - 0.6), 0, Math.PI * 2);
             ctx.lineWidth = 0.35;
             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.8})`;
             ctx.stroke();
-            ctx.restore();
           }
         }
       }
@@ -174,7 +163,6 @@ export function WaterMovingCanvas() {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none pointer-events-auto">
-      {/* 60FPS Pure Golden Water Ripple Canvas (No Bubbles, Pure Ripples) */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block cursor-pointer" />
     </div>
   );

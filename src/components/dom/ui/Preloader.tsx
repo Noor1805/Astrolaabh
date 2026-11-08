@@ -8,10 +8,10 @@ export function Preloader() {
   const finishLoading = useCreativeStore((s) => s.finishLoading);
 
   useEffect(() => {
-    // Automatically dissolve smoothly into the landing page after 4.5 seconds
+    // Automatically dissolve smoothly into the landing page in 2.2 seconds (under 3s total!)
     const timer = setTimeout(() => {
       finishLoading();
-    }, 4500);
+    }, 2200);
 
     return () => clearTimeout(timer);
   }, [finishLoading]);
@@ -22,7 +22,7 @@ export function Preloader() {
         <motion.div
           key="astrolaabh-preloader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 1.2, ease: [0.4, 0, 0.2, 1] } }}
+          exit={{ opacity: 0, transition: { duration: 0.65, ease: [0.4, 0, 0.2, 1] } }}
           className="fixed inset-0 z-[10000] bg-white pointer-events-auto"
         >
           <LoadingPage onEnter={finishLoading} />

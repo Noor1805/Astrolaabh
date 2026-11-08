@@ -6,24 +6,14 @@
   color-scheme: dark;
 }
 
-html.lenis, html.lenis body {
-  height: auto;
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+body {
+  overflow-x: hidden;
 }
 
 
@@ -67,9 +57,9 @@ html.lenis, html.lenis body {
 @media (max-width: 767px) { .editorial-section { grid-template-columns: 1fr; } .editorial-copy { min-height: 480px; padding: 42px 24px 48px; } .editorial-eyebrow { text-align: center; } .editorial-copy h2 { margin: 62px 0 0; text-align: center; font-size: clamp(48px, 15vw, 64px); } .editorial-description { margin: 46px 0 0; text-align: center; } .editorial-rule { width: 50%; margin-left: 25%; } .editorial-image { min-height: 420px; height: 420px; } }
 
 /* Ways to wear your gemstone — vertical-scroll-driven editorial sequence */
-.wear-scroll-section { height: 400vh; position: relative; background: #304d43; }
-.wear-scroll-sticky { position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; }
-.wear-panels-track { display: flex; width: 400vw; height: 100%; will-change: transform; }
+.wear-scroll-section { min-height: 100vh; position: relative; background: #304d43; }
+.wear-scroll-sticky { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+.wear-panels-track { display: flex; width: 400vw; height: 100%; will-change: transform; transform: translate3d(0,0,0); }
 .wear-panel { position: relative; flex: 0 0 100vw; width: 100vw; height: 100vh; overflow: hidden; }
 .wear-panel-1, .wear-panel-3 { background: #304d43; color: #f8f3e8; }
 .wear-panel-2, .wear-panel-4 { background: #d8c8ad; color: #20372f; }
@@ -161,7 +151,7 @@ html.lenis, html.lenis body {
 
 /* Smooth testimonial marquee */
 .testimonial-marquee-track .rfm-marquee-content { gap: 28px; padding-right: 28px; }
-.testimonial-marquee-track { animation: none !important; }
+/* Testimonial marquee handled by React Fast Marquee */
 @media (max-width: 767px) { .hero-marquee-item { height: 46px; padding-left: 24px; font-size: 9px; } .hero-marquee-item i { margin-left: 24px; } }
 
 /* Appointment consultation */

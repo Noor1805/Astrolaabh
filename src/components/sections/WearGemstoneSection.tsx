@@ -7,7 +7,7 @@ import ruby from '../../assets/ruby.png';
 import sapphire from '../../assets/sapphire.png';
 import gold from '../../assets/gold.png';
 import emerald from '../../assets/emerald.png';
-import { ScrollTrigger } from '../../lib/gsap';
+import { gsap, ScrollTrigger } from '../../lib/gsap';
 
 const panels = [
   {
@@ -57,19 +57,24 @@ export function WearGemstoneSection() {
     const track = trackRef.current;
     if (!section || !track) return;
 
-    const trigger = ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        const progress = Math.max(0, Math.min(1, self.progress));
-        track.style.transform = `translate3d(${-progress * 300}vw, 0, 0)`;
-      },
-    });
+    // Use clean GSAP context with GPU-accelerated horizontal pin
+    const ctx = gsap.context(() => {
+      gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => '+=' + (track.scrollWidth - window.innerWidth),
+          scrub: 0.8,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, section);
 
-    return () => trigger.kill();
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -114,3 +119,5 @@ export function WearGemstoneSection() {
     </section>
   );
 }
+
+export default WearGemstoneSection;

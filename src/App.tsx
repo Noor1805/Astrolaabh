@@ -8,12 +8,8 @@ import { WearGemstoneSection } from './components/sections/WearGemstoneSection';
 import { HeroMarquee } from './components/sections/HeroMarquee';
 import { AppointmentSection } from './components/sections/AppointmentSection';
 import { TestimonialsSection } from './components/sections/TestimonialsSection';
-import { useLenis } from './hooks/useLenis';
 
 export function App() {
-  // Initialize Lenis smooth scroll synchronized with GSAP ScrollTrigger
-  useLenis();
-
   return (
     <div className="relative min-h-screen bg-brand-dark text-white selection:bg-brand-accent selection:text-black">
       {/* Navigation Header */}

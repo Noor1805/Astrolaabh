@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BadgeCheck, Flower2, Play, ShieldCheck, Sparkles } from 'lucide-react';
-import heroBackground from '../../assets/herobg.png';
-import ruby from '../../assets/ruby.png';
-import emerald from '../../assets/emerald.png';
-import sapphire from '../../assets/sapphire.png';
-import diamond from '../../assets/diamond.png';
-import gold from '../../assets/gold.png';
+import heroBackground from '../../assets/herobg.webp';
+import ruby from '../../assets/ruby.webp';
+import emerald from '../../assets/emerald.webp';
+import sapphire from '../../assets/sapphire.webp';
+import diamond from '../../assets/diamond.webp';
+import gold from '../../assets/gold.webp';
 import { useCreativeStore } from '../../store/useCreativeStore';
 import { ScrollTrigger } from '../../lib/gsap';
 
@@ -71,7 +71,7 @@ export function HeroSection() {
           <div className="orbit orbit-two" />
           <div className="orbit orbit-three" />
           <div className="orbit orbit-four" />
-          <div className="gem gem-ruby"><img src={ruby} alt="Ruby gemstone" /></div>
+          <div className="gem gem-ruby"><img src={ruby} alt="Ruby gemstone" decoding="async" /></div>
           <svg className="layered-orbits" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true">
             <ellipse cx="400" cy="250" rx="165" ry="62" transform="rotate(-8 400 250)" />
             <ellipse cx="400" cy="250" rx="235" ry="88" transform="rotate(14 400 250)" />
@@ -79,16 +79,16 @@ export function HeroSection() {
             <ellipse cx="400" cy="250" rx="360" ry="145" transform="rotate(22 400 250)" />
           </svg>
           <div className="satellite-route route-emerald">
-            <img src={emerald} alt="Emerald gemstone" />
+            <img src={emerald} alt="Emerald gemstone" decoding="async" />
           </div>
           <div className="satellite-route route-sapphire">
-            <img src={sapphire} alt="Sapphire gemstone" />
+            <img src={sapphire} alt="Sapphire gemstone" decoding="async" />
           </div>
           <div className="satellite-route route-gold">
-            <img src={gold} alt="Yellow gemstone" />
+            <img src={gold} alt="Yellow gemstone" decoding="async" />
           </div>
           <div className="satellite-route route-diamond">
-            <img src={diamond} alt="Diamond gemstone" />
+            <img src={diamond} alt="Diamond gemstone" decoding="async" />
           </div>
         </div>
 

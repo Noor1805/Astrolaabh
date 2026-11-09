@@ -44,17 +44,48 @@ body {
   text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
 }
 
-/* Astrolaabh editorial second section */
-.editorial-section { grid-template-columns: 44% 56%; min-height: 680px; background: #d8c3a9; }
-.editorial-copy { position: relative; min-height: 680px; padding: 64px 10% 70px 12%; color: #172018; background: #d8c3a9; }
-.editorial-eyebrow { margin: 0; text-align: right; font-family: Georgia, serif; font-size: 10px; line-height: 1.7; letter-spacing: .18em; }
-.editorial-copy h2 { position: relative; z-index: 4; margin: 92px -16% 0 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(58px, 5.8vw, 88px); font-weight: 400; line-height: .88; letter-spacing: -.035em; }
-.editorial-description { margin: 70px 0 0 35%; font-family: Georgia, serif; font-size: 16px; font-style: italic; line-height: 1.55; }
-.editorial-rule { display: block; width: 58%; height: 1px; margin-top: 28px; margin-left: 35%; background: #b58a3a; }
-.editorial-image { position: relative; min-height: 680px; overflow: hidden; }
-.editorial-image img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: center; }
-@media (max-width: 1023px) { .editorial-section { grid-template-columns: 46% 54%; min-height: 600px; } .editorial-copy, .editorial-image { min-height: 600px; } .editorial-copy h2 { font-size: clamp(48px, 7vw, 68px); } .editorial-description { margin-left: 22%; } }
-@media (max-width: 767px) { .editorial-section { grid-template-columns: 1fr; } .editorial-copy { min-height: 480px; padding: 42px 24px 48px; } .editorial-eyebrow { text-align: center; } .editorial-copy h2 { margin: 62px 0 0; text-align: center; font-size: clamp(48px, 15vw, 64px); } .editorial-description { margin: 46px 0 0; text-align: center; } .editorial-rule { width: 50%; margin-left: 25%; } .editorial-image { min-height: 420px; height: 420px; } }
+/* Astrolaabh gemstone story */
+.story-section {
+  --story-gold: #a96f20;
+  min-height: 760px;
+  box-sizing: border-box;
+  padding: 42px 5% 64px;
+  color: #3a2616;
+  background:
+    radial-gradient(ellipse at 50% 34%, rgba(255, 241, 196, .9) 0%, rgba(247, 221, 170, .48) 38%, transparent 68%),
+    radial-gradient(ellipse at 50% 100%, #f7ddaA 0%, transparent 44%),
+    linear-gradient(115deg, #e8b968 0%, #f3d39a 18%, #f7ddaA 50%, #f3d39a 82%, #e8b968 100%);
+}
+.story-pattern { position:absolute; inset:0; pointer-events:none; opacity:.16; background-image: linear-gradient(30deg, transparent 49%, rgba(169,111,32,.16) 50%, transparent 51%), linear-gradient(150deg, transparent 49%, rgba(169,111,32,.16) 50%, transparent 51%); background-size: 76px 132px; -webkit-mask-image: radial-gradient(ellipse at center, transparent 0 20%, black 72%, transparent 100%); mask-image: radial-gradient(ellipse at center, transparent 0 20%, black 72%, transparent 100%); }
+.story-header { position: relative; z-index: 2; text-align: center; }
+.story-brand { height: 95px; margin-bottom: 12px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; width:100%; }
+.story-brand img { display:block; width:250px; max-height:64px; margin:0 auto; object-fit:contain; filter:sepia(.25) contrast(.95); }
+.story-lotus { display:block; width:118px; height:40px; margin:0 auto -2px; fill:none; stroke:#a96f20; stroke-width:1.25; }
+.story-eyebrow { margin:0 0 9px; color:#76511d; font-family:Georgia,serif; font-size:10px; letter-spacing:.34em; }
+.story-header h2 { margin:0; font-family:Georgia,'Times New Roman',serif; font-size:clamp(38px,4vw,58px); font-weight:400; line-height:1.05; letter-spacing:-.025em; }
+.story-header h2 em { font-weight:400; }
+.story-subtitle { margin:9px 0 0; font-family:Georgia,serif; font-size:17px; }
+.story-divider { width:min(320px,70vw); margin:18px auto 16px; display:flex; align-items:center; justify-content:center; gap:12px; }
+.story-divider span { width:80px; height:1px; background:rgba(169,111,32,.55); }
+.story-divider i { width:9px; height:9px; background:#b17922; transform:rotate(45deg); box-shadow:0 0 0 4px rgba(255,232,181,.25); }
+.story-gallery { position:relative; z-index:2; width:min(1180px,100%); margin:0 auto; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; }
+.story-item { min-width:0; width:100%; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.story-niche { position:relative; width:100%; aspect-ratio:300/370; filter:drop-shadow(0 14px 24px rgba(210,155,55,.12)); }
+.story-arch { width:100%; height:100%; overflow:visible; }
+.story-arch image { filter:drop-shadow(0 9px 8px rgba(111,67,14,.16)); }
+.story-arch-fill { stroke:none; }
+.story-arch-outer,.story-arch-inner { fill:rgba(255,232,181,.05); stroke:#a96f20; stroke-width:1.25; vector-effect:non-scaling-stroke; }
+.story-arch-inner { stroke:rgba(169,111,32,.55); stroke-width:.8; }
+.story-platform { position:absolute; left:16%; right:16%; bottom:3.2%; height:5.8%; border-radius:50%; border-top:1px solid rgba(169,111,32,.55); background:linear-gradient(180deg,#ffe7ad 0%,#c99436 62%,#e9bd68 100%); box-shadow:0 5px 12px rgba(114,69,16,.16),0 0 24px rgba(255,232,181,.72); }
+.story-stage-icon { height:30px; margin-top:-4px; }
+.story-stage-icon svg { width:34px; height:34px; fill:none; stroke:#9a6420; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.story-stage-number { display:none; }
+.story-item h3 { margin:1px 0 3px; color:#7c391f; font-family:Georgia,'Times New Roman',serif; font-size:clamp(23px,2vw,30px); font-weight:700; line-height:1; }
+.story-item p { width:min(220px,90%); margin:0 auto; font-family:Georgia,serif; font-size:clamp(13px,1.15vw,16px); line-height:1.32; }
+.story-bottom-wave { position:absolute; left:-8%; bottom:-52px; width:116%; height:100px; opacity:.14; border-top:1px solid #a96f20; border-radius:50%; }
+.story-bottom-wave::before { content:''; position:absolute; left:0; right:0; top:13px; height:1px; background:#a96f20; transform:scaleY(.5); }
+@media (max-width:1023px) { .story-section { padding-inline:8%; } .story-gallery { grid-template-columns:repeat(2,minmax(0,300px)); justify-content:center; gap:48px 30px; } }
+@media (max-width:767px) { .story-section { padding:36px 10% 54px; } .story-brand { height:82px; } .story-brand img { width:210px; } .story-header h2 { font-size:38px; } .story-subtitle { font-size:15px; } .story-gallery { grid-template-columns:minmax(0,310px); gap:38px; } .story-item h3 { font-size:30px; } .story-item p { font-size:16px; } }
 
 /* Ways to wear your gemstone — vertical-scroll-driven editorial sequence */
 .wear-scroll-section { min-height: 100vh; position: relative; background: #304d43; }
@@ -116,7 +147,9 @@ body {
 .testimonials-heading span { display: block; margin-top: 18px; font-family: Georgia, serif; font-size: 15px; line-height: 1.5; }
 .testimonial-rows { display: flex; flex-direction: column; gap: 24px; }
 .testimonial-marquee { width: 100%; overflow: hidden; }
-.testimonial-marquee-track { display: flex; width: max-content; will-change: transform; backface-visibility: hidden; transform: translate3d(0, 0, 0); }
+.testimonial-marquee-track { display: flex; gap: 24px; width: max-content; will-change: transform; backface-visibility: hidden; }
+.testimonial-marquee-left { animation: testimonial-left 38s linear infinite; }
+.testimonial-marquee-right { animation: testimonial-right 38s linear infinite; }
 .testimonial-marquee-set { flex: 0 0 auto; display: flex; gap: 24px; padding-right: 24px; }
 .testimonial-card { width: 340px; height: 190px; flex: 0 0 340px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; padding: 26px 28px 22px; border-radius: 20px; }
 .testimonial-rows { gap: 26px; }
@@ -149,9 +182,8 @@ body {
 .hero-marquee-item i { width: 5px; height: 5px; margin-left: 34px; border: 1px solid #b89c66; transform: rotate(45deg); }
 @keyframes hero-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
 
-/* Smooth testimonial marquee */
-.testimonial-marquee-track .rfm-marquee-content { gap: 28px; padding-right: 28px; }
-/* Testimonial marquee handled by React Fast Marquee */
+@keyframes testimonial-left { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(calc(-50% - 12px), 0, 0); } }
+@keyframes testimonial-right { from { transform: translate3d(calc(-50% - 12px), 0, 0); } to { transform: translate3d(0, 0, 0); } }
 @media (max-width: 767px) { .hero-marquee-item { height: 46px; padding-left: 24px; font-size: 9px; } .hero-marquee-item i { margin-left: 24px; } }
 
 /* Appointment consultation */

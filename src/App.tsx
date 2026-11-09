@@ -7,6 +7,7 @@ import { HeroSection } from './components/sections/HeroSection';
 import { HeroMarquee } from './components/sections/HeroMarquee';
 
 const NarrativeSection = lazy(() => import('./components/sections/NarrativeSection').then((module) => ({ default: module.NarrativeSection })));
+const GemstoneCollectionSection = lazy(() => import('./components/sections/GemstoneCollectionSection'));
 const GallerySection = lazy(() => import('./components/sections/GallerySection').then((module) => ({ default: module.GallerySection })));
 const WearGemstoneSection = lazy(() => import('./components/sections/WearGemstoneSection'));
 const AppointmentSection = lazy(() => import('./components/sections/AppointmentSection').then((module) => ({ default: module.AppointmentSection })));
@@ -55,6 +56,7 @@ export function App() {
         <HeroSection />
         <HeroMarquee />
         <LazyMount><NarrativeSection /></LazyMount>
+        <LazyMount><GemstoneCollectionSection /></LazyMount>
         <LazyMount><GallerySection /></LazyMount>
         <LazyMount><WearGemstoneSection /></LazyMount>
         <LazyMount><AppointmentSection /></LazyMount>

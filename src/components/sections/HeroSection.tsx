@@ -55,7 +55,7 @@ export function HeroSection() {
           </h1>
           <div className="hero-title-flourish" aria-hidden="true"><span>✦</span></div>
           <div className="mt-7 flex flex-wrap items-center gap-5 sm:mt-8">
-            <button className="hero-primary" onClick={() => scrollTo('narrative')}>
+            <button className="hero-primary" onClick={() => scrollTo('gemstone-collection')}>
               Explore Collection <ArrowRight className="h-4 w-4" />
             </button>
             <button className="hero-secondary" onClick={() => scrollTo('narrative')}>

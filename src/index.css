@@ -435,6 +435,119 @@ body {
   .collection-card, .collection-card-footer a span, .collection-all-link { transition: none; }
 }
 
+/* Interactive Pancharatna gemstone showcase */
+.gemstone-showcase {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(340px, .82fr) minmax(0, 1.18fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  min-height: min(810px, 100vh);
+  padding: 104px max(5vw, 32px) 68px;
+  overflow: hidden;
+  color: #382a1d;
+  background:
+    radial-gradient(ellipse at 75% 48%, rgba(245, 220, 177, .46), transparent 48%),
+    #f7f0e5;
+}
+.showcase-information { position: relative; z-index: 2; width: min(100%, 520px); margin: 0 auto; }
+.showcase-eyebrow { margin: 0 0 18px; color: #6d5540; font: 600 10px/1.5 Georgia, serif; letter-spacing: .3em; text-transform: uppercase; }
+.showcase-eyebrow::after { display: inline-block; width: 74px; height: 1px; margin: 0 0 3px 14px; background: #b99561; content: ''; }
+.showcase-copy { animation: showcase-copy-in .55s ease both; }
+.showcase-copy h2 { margin: 0; color: #3a2817; font: 400 clamp(68px, 8vw, 112px)/.95 Georgia, 'Times New Roman', serif; letter-spacing: -.055em; }
+.showcase-hindi { margin: 8px 0 0; color: #704b22; font: 400 clamp(21px, 2.4vw, 32px)/1.2 Georgia, serif; }
+.showcase-tagline { margin: 9px 0 14px; color: #6e512e; font: italic 400 clamp(20px, 2.2vw, 28px)/1.2 Georgia, serif; }
+.showcase-tagline span { color: #a8752b; font-style: normal; }
+.showcase-description { max-width: 430px; margin: 0; color: #44392e; font: 15px/1.55 Georgia, serif; }
+.showcase-details { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 440px; margin: 26px 0 22px; }
+.showcase-details > div { min-width: 0; padding-right: 14px; }
+.showcase-details > div + div { padding-left: 18px; border-left: 1px solid #d9c5a5; }
+.showcase-details dt { display: flex; align-items: center; gap: 10px; color: #8c6430; font: 600 9px/1.5 Georgia, serif; letter-spacing: .22em; text-transform: uppercase; }
+.showcase-details dt span { color: #a76d1d; font: 24px/1 Georgia, serif; }
+.showcase-details dd { margin: 3px 0 0 34px; color: #33291f; font: 15px/1.35 Georgia, serif; }
+.showcase-benefits { position: relative; max-width: 470px; margin: 0 0 27px; padding: 23px 24px 18px; border: 1px solid #d8b27d; border-radius: 14px; background: rgba(255, 249, 238, .52); }
+.showcase-benefits h3 { position: absolute; top: -12px; left: 50%; min-width: 164px; margin: 0; padding: 4px 14px; transform: translateX(-50%); border: 1px solid #d8b27d; border-radius: 999px; background: #f7f0e5; color: #704b22; font: 600 10px/1.3 Georgia, serif; letter-spacing: .22em; text-align: center; text-transform: uppercase; }
+.showcase-benefits h3::before, .showcase-benefits h3::after { position: absolute; top: 50%; width: 5px; height: 5px; transform: translateY(-50%) rotate(45deg); background: #aa782f; content: ''; }
+.showcase-benefits h3::before { left: 8px; }
+.showcase-benefits h3::after { right: 8px; }
+.showcase-benefits ul { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; margin: 0; padding: 0; list-style: none; }
+.showcase-benefits li { display: flex; align-items: center; gap: 10px; min-width: 0; color: #3f342a; font: 15px/1.3 Georgia, serif; }
+.showcase-benefits li span { width: 20px; flex: 0 0 20px; color: #a76d1d; font-size: 19px; text-align: center; }
+.showcase-purchase { display: flex; align-items: center; gap: 28px; }
+.showcase-purchase > p { margin: 0; color: #36291c; font: italic 18px/1 Georgia, serif; white-space: nowrap; }
+.showcase-purchase > p span { margin-right: 5px; font-size: 15px; }
+.showcase-purchase > p strong { font-size: 30px; font-style: normal; font-weight: 600; }
+.showcase-purchase button { min-width: 184px; padding: 14px 22px; border: 1px solid #b88a46; border-radius: 999px; background: #3d4a36; box-shadow: 0 5px 13px rgba(67, 55, 33, .16); color: #f8ecd5; cursor: pointer; font: 16px/1 Georgia, serif; transition: background-color .2s ease, transform .2s ease; }
+.showcase-purchase button:hover { transform: translateY(-2px); background: #303d2d; }
+.showcase-purchase button span { margin-left: 8px; font-size: 19px; }
+.showcase-stage { position: relative; width: min(100%, 760px); height: min(690px, 72vw); min-height: 530px; justify-self: center; perspective: 1100px; }
+.showcase-stage::after { position: absolute; right: 6%; bottom: 3%; left: 6%; z-index: 0; height: 30px; border-radius: 50%; background: rgba(108, 78, 40, .1); content: ''; filter: blur(14px); }
+.showcase-doorway { position: absolute; right: 5%; bottom: 2%; z-index: 1; width: 88%; height: 88%; object-fit: contain; object-position: center bottom; }
+.showcase-gem-slot { position: absolute; right: 24%; bottom: 24%; z-index: 3; display: grid; width: 51%; height: 47%; place-items: center; perspective: 900px; }
+.showcase-gem-arrive { display: grid; width: 100%; height: 100%; place-items: center; animation: showcase-gem-enter .75s cubic-bezier(.2,.7,.25,1) both; }
+.showcase-main-gem { display: block; width: min(100%, 350px); max-height: 100%; object-fit: contain; animation: showcase-gem-float 4s ease-in-out infinite; }
+.gemstone-showcase:not(.is-visible) .showcase-main-gem { animation-play-state: paused; }
+.showcase-stone { position: absolute; right: 6%; bottom: 3%; z-index: 4; width: 88%; max-height: 30%; object-fit: contain; object-position: center bottom; }
+.showcase-orbit { position: absolute; top: 3%; left: 6%; z-index: 5; width: 88%; aspect-ratio: 2 / 1; }
+.showcase-orbit-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.showcase-orbit-line path { fill: none; stroke: rgba(164, 112, 42, .78); stroke-width: .8; vector-effect: non-scaling-stroke; }
+.showcase-orbit-item { position: absolute; display: block; width: 48px; height: 48px; padding: 0; transform: translate(-50%, -50%); border: 0; background: transparent; color: #33281e; cursor: pointer; }
+.showcase-orbit-item img { display: block; width: 100%; height: 100%; padding: 3px; border: 1px solid #d6b77f; border-radius: 50%; background: #fffaf1; box-shadow: 0 3px 8px rgba(84, 57, 26, .12); object-fit: contain; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.showcase-orbit-item:hover img { transform: scale(1.09); border-color: #9c691e; box-shadow: 0 0 0 3px rgba(195, 145, 71, .18), 0 4px 10px rgba(84, 57, 26, .15); }
+.showcase-orbit-item:focus-visible { outline: 2px solid #8e622a; outline-offset: 5px; border-radius: 4px; }
+.showcase-orbit-item span { position: absolute; top: calc(100% + 5px); left: 50%; max-width: 112px; overflow: hidden; transform: translateX(-50%); color: #33281e; font: italic 12px/1.15 Georgia, serif; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.showcase-orbit-item:focus-visible span { text-decoration: underline; text-decoration-color: #b99561; text-underline-offset: 3px; }
+.showcase-pagination { position: absolute; right: 1%; bottom: 6%; z-index: 6; display: flex; align-items: center; gap: 13px; padding: 4px 9px; border: 1px solid rgba(204, 172, 124, .58); border-radius: 999px; background: rgba(255, 250, 241, .7); color: #88652f; }
+.showcase-pagination button { width: 30px; height: 30px; border: 0; background: transparent; color: #51402c; cursor: pointer; font: 27px/1 Georgia, serif; }
+.showcase-pagination span { display: flex; align-items: center; gap: 7px; font: 10px/1 Georgia, serif; letter-spacing: .1em; }
+.showcase-pagination i { width: 4px; height: 4px; border-radius: 50%; background: #a87933; }
+@keyframes showcase-gem-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes showcase-gem-enter { from { opacity: 0; transform: translateY(14px) scale(.86); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes showcase-copy-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1100px) {
+  .gemstone-showcase { grid-template-columns: minmax(300px, .9fr) minmax(0, 1.1fr); gap: 24px; padding-inline: 4%; }
+  .showcase-stage { min-height: 500px; }
+  .showcase-orbit-item { width: 42px; height: 42px; }
+  .showcase-orbit-item span { max-width: 96px; font-size: 11px; }
+  .showcase-benefits { padding-inline: 17px; }
+  .showcase-benefits li { font-size: 13px; }
+}
+@media (max-width: 760px) {
+  .gemstone-showcase { display: flex; flex-direction: column; gap: 12px; min-height: 0; padding: 88px 20px 56px; }
+  .showcase-stage { order: 0; width: min(100%, 560px); height: 480px; min-height: 0; }
+  .showcase-information { order: 1; width: min(100%, 520px); }
+  .showcase-eyebrow { text-align: center; }
+  .showcase-eyebrow::after { width: 36px; margin-left: 8px; }
+  .showcase-copy h2 { font-size: clamp(58px, 16vw, 82px); text-align: center; }
+  .showcase-hindi, .showcase-tagline { text-align: center; }
+  .showcase-description { margin-inline: auto; text-align: center; }
+  .showcase-details { margin-inline: auto; }
+  .showcase-benefits { margin-inline: auto; }
+  .showcase-purchase { justify-content: center; flex-wrap: wrap; }
+  .showcase-orbit { top: 3%; left: 5%; width: 90%; }
+  .showcase-doorway { right: 6%; bottom: 1%; width: 88%; height: 83%; }
+  .showcase-gem-slot { right: 25%; bottom: 23%; width: 50%; height: 42%; }
+  .showcase-main-gem { width: min(100%, 260px); }
+  .showcase-stone { right: 5%; bottom: 1%; width: 90%; max-height: 27%; }
+  .showcase-orbit-item { width: 42px; height: 42px; }
+  .showcase-orbit-item span { max-width: 82px; font-size: 10px; }
+  .showcase-pagination { right: 50%; bottom: 1%; transform: translateX(50%); }
+}
+@media (max-width: 420px) {
+  .gemstone-showcase { padding-inline: 14px; }
+  .showcase-stage { height: 390px; }
+  .showcase-orbit-item { width: 36px; height: 36px; }
+  .showcase-orbit-item span { max-width: 72px; font-size: 9px; }
+  .showcase-gem-slot { right: 23%; bottom: 23%; width: 54%; }
+  .showcase-benefits { padding-inline: 14px; }
+  .showcase-benefits ul { gap: 10px 6px; }
+  .showcase-benefits li { gap: 6px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .showcase-gem-arrive, .showcase-main-gem, .showcase-copy { animation: none; }
+  .showcase-orbit-item img, .showcase-purchase button { transition: none; }
+}
+
 /* Astrolaabh gemstone hero */
 .lotus-mark { font-family: Georgia, serif; color: #f8f1df; font-size: 30px; line-height: 1; filter: drop-shadow(0 1px 1px rgba(74,58,33,.25)); }
 .consult-button { color: #302c26; }

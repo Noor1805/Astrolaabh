@@ -1,67 +1,15 @@
-import goldSapphire from '../../assets/gold.webp';
-import blueSapphire from '../../assets/sapphire.webp';
-import ruby from '../../assets/ruby.webp';
-import emerald from '../../assets/emerald.webp';
-
-interface Gemstone {
-  name: string;
-  hindiName: string;
-  image: string;
-  origin: string;
-  planet: string;
-  benefits: [string, string, string, string];
-  price: string;
-}
-
-const availableGemstones: Gemstone[] = [
-  {
-    name: 'Yellow Sapphire',
-    hindiName: 'पुखराज · Pukhraj',
-    image: goldSapphire,
-    origin: 'Ceylon (Sri Lanka)',
-    planet: 'Jupiter (Guru)',
-    benefits: ['Prosperity', 'Wisdom', 'Career growth', 'Marriage'],
-    price: '₹14,000',
-  },
-  {
-    name: 'Blue Sapphire',
-    hindiName: 'नीलम · Neelam',
-    image: blueSapphire,
-    origin: 'Sri Lanka, Kashmir',
-    planet: 'Saturn (Shani)',
-    benefits: ['Discipline', 'Good fortune', 'New openings', 'Protection'],
-    price: '₹22,000',
-  },
-  {
-    name: 'Ruby',
-    hindiName: 'माणिक · Manik',
-    image: ruby,
-    origin: 'Burma, Mozambique',
-    planet: 'Sun (Surya)',
-    benefits: ['Leadership', 'Recognition', 'Decisiveness', 'Vitality'],
-    price: '₹18,000',
-  },
-  {
-    name: 'Emerald',
-    hindiName: 'पन्ना · Panna',
-    image: emerald,
-    origin: 'Zambia, Colombia',
-    planet: 'Mercury (Budh)',
-    benefits: ['Intellect', 'Communication', 'Creativity', 'Business'],
-    price: '₹16,000',
-  },
-];
+import { gemstones as gemstoneData, type Gemstone } from '../../lib/gemstones';
 
 const gemstones = [
-  availableGemstones[0],
-  availableGemstones[1],
-  availableGemstones[2],
-  availableGemstones[3],
-  availableGemstones[0],
-  availableGemstones[1],
-  availableGemstones[2],
-  availableGemstones[3],
-  availableGemstones[0],
+  gemstoneData[3],
+  gemstoneData[1],
+  gemstoneData[0],
+  gemstoneData[2],
+  gemstoneData[3],
+  gemstoneData[1],
+  gemstoneData[0],
+  gemstoneData[2],
+  gemstoneData[3],
 ];
 
 function GemstoneCard({ gemstone }: { gemstone: Gemstone }) {
@@ -91,7 +39,13 @@ function GemstoneCard({ gemstone }: { gemstone: Gemstone }) {
 
         <div className="collection-card-footer">
           <p><span>from</span> <strong>{gemstone.price}</strong></p>
-          <a href="#appointment" aria-label={`View ${gemstone.name} and book a consultation`}>View <span aria-hidden="true">→</span></a>
+          <a
+            href="#gemstone-showcase"
+            aria-label={`View ${gemstone.name}`}
+            onClick={() => window.dispatchEvent(new CustomEvent<string>('astrolaabh:select-gemstone', { detail: gemstone.id }))}
+          >
+            View <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </article>

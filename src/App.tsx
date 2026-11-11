@@ -14,7 +14,7 @@ const WearGemstoneSection = lazy(() => import('./components/sections/WearGemston
 const AppointmentSection = lazy(() => import('./components/sections/AppointmentSection').then((module) => ({ default: module.AppointmentSection })));
 const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection').then((module) => ({ default: module.TestimonialsSection })));
 
-function LazyMount({ children }: { children: ReactNode }) {
+function LazyMount({ children, minHeight }: { children: ReactNode; minHeight: string }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -27,14 +27,14 @@ function LazyMount({ children }: { children: ReactNode }) {
         setShouldLoad(true);
         observer.disconnect();
       }
-    }, { rootMargin: '800px 0px' });
+    }, { rootMargin: '250px 0px' });
 
     observer.observe(host);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={hostRef}>
+    <div ref={hostRef} style={{ minHeight }}>
       {shouldLoad ? <Suspense fallback={null}>{children}</Suspense> : null}
     </div>
   );
@@ -56,13 +56,13 @@ export function App() {
       <main className="relative z-10">
         <HeroSection />
         <HeroMarquee />
-        <LazyMount><NarrativeSection /></LazyMount>
-        <LazyMount><GemstoneCollectionSection /></LazyMount>
-        <LazyMount><GemstoneShowcaseSection /></LazyMount>
-        <LazyMount><GallerySection /></LazyMount>
-        <LazyMount><WearGemstoneSection /></LazyMount>
-        <LazyMount><AppointmentSection /></LazyMount>
-        <LazyMount><TestimonialsSection /></LazyMount>
+        <LazyMount minHeight="760px"><NarrativeSection /></LazyMount>
+        <LazyMount minHeight="1000px"><GemstoneCollectionSection /></LazyMount>
+        <LazyMount minHeight="760px"><GemstoneShowcaseSection /></LazyMount>
+        <LazyMount minHeight="760px"><GallerySection /></LazyMount>
+        <LazyMount minHeight="100vh"><WearGemstoneSection /></LazyMount>
+        <LazyMount minHeight="800px"><AppointmentSection /></LazyMount>
+        <LazyMount minHeight="850px"><TestimonialsSection /></LazyMount>
       </main>
 
       {/* Footer */}
